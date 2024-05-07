@@ -22,13 +22,41 @@ fun main(args:Array<String>){
         Grocery("Olive Oil", "Pantry", "Bottle", 6.0, 1),
         Grocery("Ice Cream", "Frozen", "Pack", 3.0, 2))
 
+
     /*
-      Sum of all Quantity values
+       Using minBy and maxBy Higher Order Functions
      */
+    val item = groceries2.maxBy {
+        it.unitPrice
+    }
+
+    println("The Item with the highest Unit price is ${item.name}")
+
+
+    val itemLowestQuantity = groceries2.minBy {
+        it.quantity
+    }
+
+    println("The Item with the Lowest quantity is ${itemLowestQuantity.name}")
+
+
+    /*
+        sumBy and sumByDouble Higher Order Functions
+     */
+    /*
+     Sum of all Quantity values
+    */
     val sumQuantities = groceries2.sumOf {
         it.quantity
     }
 
-    print("Total Quantities $sumQuantities")
+    println("Total Quantities $sumQuantities")
+
+    val totalPrice = groceries2.sumOf {
+        it.quantity * it.unitPrice
+    }
+
+    println("Total Price at Checkout: $totalPrice")
+
 
 }
